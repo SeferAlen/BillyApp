@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from './login.service';
 import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { AlertDialogComponent } from '../alert-dialog/alert-dialog.component';
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 import { jwtUtil } from '../utility/jwtUtil';
 
 @Component({
@@ -15,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private _loginSerivce: LoginService, public dialog: MatDialog) {
+  constructor(private fb: FormBuilder, private _loginSerivce: LoginService, private router: Router, private authService: AuthService) {
   }
 
   ngOnInit() {
@@ -42,9 +44,13 @@ export class LoginComponent implements OnInit {
     this._loginSerivce.login(this.loginForm.value.username, this.loginForm.value.password)
     .subscribe(
       (response: any) => {
-        console.log("OK");
-        console.log(jwtUtil.getAll(response));
-        console.log(jwtUtil.getUsername(response));
+        localStorage.setItem("token", response);
+        let role = this.authService.getUserRole();
+        if (role == "Admin") {
+          this.router.navigate(['adminPage']);
+        } else if (role == "User") {
+          this.router.navigate(['userPage']);
+        }     
       }, 
       (error: any) => {
         console.log("Error");

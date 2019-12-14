@@ -13,11 +13,17 @@ import { LoginComponent } from './login/login.component';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor } from './helpers/error.Interceptor';
+import { AdminComponent } from './admin/admin.component';
+import { UserComponent } from './user/user.component';
+import { AuthGuardService } from './services/auth-guard.service';
+import { RoleGuardService } from './services/role-guard.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    AdminComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +50,9 @@ import { ErrorInterceptor } from './helpers/error.Interceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
       multi: true
-    }
+    },
+    AuthGuardService,
+    RoleGuardService
   ],
   bootstrap: [AppComponent]
 })

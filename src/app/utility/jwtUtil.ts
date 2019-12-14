@@ -28,4 +28,16 @@ export class jwtUtil {
         return null;
     }
     }
+
+    static isExpired(token: string): boolean {
+        var current_time = new Date().getTime() / 1000;
+	    if (current_time > jwt_decode(token).exp) 
+        {
+            console.log("EXPIRED");
+            return true; 
+        } else {
+            console.log("NOT EXPIRED");
+            return false;
+        }
+    }
 }
