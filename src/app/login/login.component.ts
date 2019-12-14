@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from './login.service';
 import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { AlertDialogComponent } from '../alert-dialog/alert-dialog.component';
-
+import { jwtUtil } from '../utility/jwtUtil';
 
 @Component({
   selector: 'app-login',
@@ -43,22 +43,13 @@ export class LoginComponent implements OnInit {
     .subscribe(
       (response: any) => {
         console.log("OK");
-        console.log(response)
+        console.log(jwtUtil.getAll(response));
+        console.log(jwtUtil.getUsername(response));
       }, 
       (error: any) => {
         console.log("Error");
-        console.log(error.error)
-        this.dialogError(error.error);
+        console.log(error.error);
       }
     );
-  }
-
-  dialogError(message: string): void {
-    let dialogRef = this.dialog.open(AlertDialogComponent, {
-      disableClose: true,
-      data: {
-        msg: message
-      }
-    });
   }
 }

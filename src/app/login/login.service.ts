@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx';
+import { jwtUtil } from '../utility/jwtUtil';
 
 @Injectable()
 export class LoginService {

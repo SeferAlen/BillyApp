@@ -11,14 +11,13 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatButtonModule, MatCardModule, MatInputModule, MatSelectModule, MatCheckboxModule, MatChipsModule } from '@angular/material';
 import { LoginComponent } from './login/login.component';
 
-import { HttpClientModule } from '@angular/common/http';
-import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ErrorInterceptor } from './helpers/error.Interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    AlertDialogComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -35,12 +34,17 @@ import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
     MatCheckboxModule,
     MatChipsModule
   ],
-  entryComponents: [AlertDialogComponent],
+  entryComponents: [],
   providers: [
     {
        provide: MatDialogRef,
        useValue: {}
-     }
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
