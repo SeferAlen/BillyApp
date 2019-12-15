@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators, ValidatorFn, ValidationErrors  } fr
 import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { AlertDialogComponent } from '../alert-dialog/alert-dialog.component';
 import { Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';
+import { UserService } from '../services/user.service';
 import { jwtUtil } from '../utility/jwtUtil';
 import { popUp } from '../utility/popUp';
 
@@ -17,7 +17,7 @@ export class PasswordComponent implements OnInit {
 
   passwordForm: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private userService: UserService) { }
 
   ngOnInit() {
     this.passwordForm = this.fb.group({
@@ -37,7 +37,23 @@ export class PasswordComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.passwordForm['controls'].passwordGroup['controls'].password.value);
+    this.userService.changePassword(this.passwordForm['controls'].passwordGroup['controls'].password.value)
+    .subscribe(
+      (response: any) => {
+        if (response.status == 202) {
+          popUp.createFailed('Failed', 'Password same as old one. Please chose another password');
+        } else if (response.status == 200) {
+          popUp.createSuccess('Success', 'Password changed');  
+        } else {
+          console.log(response)
+          popUp.createError('Error', 'Unknown error');
+        }
+      }, 
+      (error: any) => {
+        console.log(error);
+        popUp.createError('Error', error);
+      }
+    );
   }
 
   menuClicked() {

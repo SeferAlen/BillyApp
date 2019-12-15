@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { jwtUtil } from '../utility/jwtUtil';
+import { Bill } from '../interface/Bill';
+import { BillsService } from '../services/bill.service';
 
 @Component({
   selector: 'app-user',
@@ -10,8 +12,9 @@ import { jwtUtil } from '../utility/jwtUtil';
 export class UserComponent implements OnInit {
 
   username: string;
+  bills: Bill[];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private billService: BillsService) { }
 
   ngOnInit() {
     this.username = jwtUtil.getUsername(localStorage.getItem('token'));
@@ -20,5 +23,14 @@ export class UserComponent implements OnInit {
   logout() {
     localStorage.removeItem('token');
     this.router.navigate(['login']);
+  }
+
+  getBills() {
+    this.billService.getBillsByUsername(this.username).subscribe((
+      (bills) => {
+        this.bills = bills;
+        console.log(bills);
+      }
+    ))
   }
 }

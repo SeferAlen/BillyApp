@@ -1,0 +1,20 @@
+<div class="tableContainer">
+    <table>
+      <caption class="tableHeader">Bills</caption>
+      <thead>
+        <th>Id</th>
+        <th>Total</th>
+        <th>Month</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bill of bills">
+            <ng-container *ngIf="bill.total > sliderValue" >
+                <td>{{bill.billId}}</td>
+                <td>{{bill.total}}</td>
+                <td>{{bill.date}}</td>    
+            </ng-container>
+        </tr>
+      </tbody>
+      Min value: <mat-slider [(ngModel)]="sliderValue" (input)="onInputChange($event)" (input)="sliderValue = $event.value" min="1" [max]="maxValue"></mat-slider> {{sliderValue}}
+    </table>
+  </div>

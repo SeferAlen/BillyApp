@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.loginForm.value.username, this.loginForm.value.password)
     .subscribe(
       (response: any) => {
-        localStorage.setItem("token", response);
+        localStorage.setItem("token", response.token);
 
         let role = this.authService.getUserRole();
         if (role == "Admin") {

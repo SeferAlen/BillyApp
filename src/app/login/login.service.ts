@@ -19,6 +19,6 @@ export class LoginService {
              })
         };
 
-        return this._http.post(this.url, { username: username, password: password }, { responseType: 'text' });
+        return this._http.post<any>(this.url, { username: username, password: password }, httpOptions);
     }
-}
+}             
