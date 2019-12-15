@@ -12,12 +12,16 @@ export class AuthService {
   }
   
   public isAuthenticated(): boolean {    
-    const token = localStorage.getItem('token'); 
-    return jwtUtil.isExpired(token);
+    if (localStorage.getItem('token') != null) {
+      const token = localStorage.getItem('token'); 
+      return jwtUtil.isExpired(token);
+    } else return false;
   }
 
   public getUserRole(): string {
+    if (localStorage.getItem('token') != null) {
       const token = localStorage.getItem('token'); 
       return jwtUtil.getRole(token);
+    } else return '';
   }
 }

@@ -4,20 +4,19 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { popUp } from '../utility/popUp';
 
-
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
     constructor() {}
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(request).pipe(catchError(err => {
-            if (err.status === 401) {
-                console.log(err.error);
+
+            if (err.status == 401) {
                 popUp.createFailed('Unauthorized', err.error);
             } else if (err.status == 400) {
                 popUp.createFailed('Bad request', err.error);
             } else if (err.status == 500) {
-                popUp.createFailed('Server error', err.error);
+                popUp.createError('Server error', err.error);
             }
 
             const error = err.error.message || err.statusText;

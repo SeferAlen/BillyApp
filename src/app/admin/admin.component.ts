@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { jwtUtil } from '../utility/jwtUtil';
 
 @Component({
   selector: 'app-admin',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+  username: string;
+
+  constructor(private router: Router) { }
 
   ngOnInit() {
+    this.username = jwtUtil.getUsername(localStorage.getItem('token'));
   }
 
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['login']);
+  }
 }

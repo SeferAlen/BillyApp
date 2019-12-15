@@ -1,1 +1,7 @@
-<p>user works!</p>
+<button mat-button [matMenuTriggerFor]="menu" class="menuDesign">Welcome {{ username }}</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>My bills</button>
+  <button mat-menu-item (click)="logout()">Logout</button>
+</mat-menu>
+
+<app-password class="password"></app-password>

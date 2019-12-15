@@ -9,7 +9,6 @@ export class LoginService {
     url = "http://localhost:9090/login";
 
     constructor(private _http: HttpClient) {
-    
     }
 
     login(username: string, password: string): Observable<any> {

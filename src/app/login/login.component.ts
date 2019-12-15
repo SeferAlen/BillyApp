@@ -6,6 +6,7 @@ import { AlertDialogComponent } from '../alert-dialog/alert-dialog.component';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { jwtUtil } from '../utility/jwtUtil';
+import { popUp } from '../utility/popUp';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private _loginSerivce: LoginService, private router: Router, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private loginService: LoginService, private router: Router, private authService: AuthService) {
   }
 
   ngOnInit() {
@@ -28,7 +29,6 @@ export class LoginComponent implements OnInit {
           Validators.required,
           Validators.minLength(8)]]
     });
-    console.log("Started");
   }
 
   get username() {
@@ -40,11 +40,11 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.loginForm.value);
-    this._loginSerivce.login(this.loginForm.value.username, this.loginForm.value.password)
+    this.loginService.login(this.loginForm.value.username, this.loginForm.value.password)
     .subscribe(
       (response: any) => {
         localStorage.setItem("token", response);
+
         let role = this.authService.getUserRole();
         if (role == "Admin") {
           this.router.navigate(['adminPage']);
@@ -53,8 +53,6 @@ export class LoginComponent implements OnInit {
         }     
       }, 
       (error: any) => {
-        console.log("Error");
-        console.log(error.error);
       }
     );
   }

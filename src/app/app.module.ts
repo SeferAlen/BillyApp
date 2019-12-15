@@ -8,7 +8,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
-import { MatButtonModule, MatCardModule, MatInputModule, MatSelectModule, MatCheckboxModule, MatChipsModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatInputModule, MatSelectModule, MatCheckboxModule, MatChipsModule, MatMenuModule } from '@angular/material';
 import { LoginComponent } from './login/login.component';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -17,13 +17,15 @@ import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from './user/user.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { RoleGuardService } from './services/role-guard.service';
+import { PasswordComponent } from './password/password.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     AdminComponent,
-    UserComponent
+    UserComponent,
+    PasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,8 @@ import { RoleGuardService } from './services/role-guard.service';
     MatInputModule,
     MatSelectModule,
     MatCheckboxModule,
-    MatChipsModule
+    MatChipsModule,
+    MatMenuModule
   ],
   entryComponents: [],
   providers: [
