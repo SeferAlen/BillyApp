@@ -7,8 +7,8 @@ import { jwtUtil } from '../utility/jwtUtil';
 @Injectable()
 export class UserService {
 
-    urlPassword = "http://localhost:9090/users/password";
-    urlUsers = "http://localhost:9090/users";
+    urlPassword = "https://billyservices.herokuapp.com/users/password";
+    urlUsers = "https://billyservices.herokuapp.com/users";
 
     constructor(private _http: HttpClient) {
     }

@@ -22,7 +22,7 @@ export class BillsService {
              })
         };
 
-        this.urlUsername = "http://localhost:9090/bills/username/" + username;
+        this.urlUsername = "https://billyservices.herokuapp.com/bills/username/" + username;
 
         console.log("getBillsByUsername " + this.urlUsername);
 
@@ -38,7 +38,7 @@ export class BillsService {
              })
         };
 
-        this.urlId = "http://localhost:9090/bills/uuid/" + id;
+        this.urlId = "https://billyservices.herokuapp.com/bills/uuid/" + id;
 
         console.log("getBillsById " + this.urlId);
 
