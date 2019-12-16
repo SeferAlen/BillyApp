@@ -1,0 +1,12 @@
+<button mat-button [matMenuTriggerFor]="menu" class="menuDesign">Welcome {{ username }}</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="getUsers()">Users</button>
+  <button mat-menu-item (click)="logout()">Logout</button>
+</mat-menu>
+
+<app-password class="password"></app-password>
+
+<div class="UsersBills">
+  <app-users *ngIf="users" [users]="users" class="users" (onUserSelected)="getUserBills($event)"></app-users>
+  <app-bill *ngIf="bills" [bills]="bills" class="bills" [username]=""></app-bill>
+</div>

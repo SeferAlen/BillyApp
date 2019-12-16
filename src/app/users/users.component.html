@@ -1,0 +1,23 @@
+<div class="tableContainer">
+    <table>
+      <caption class="tableHeader">Users</caption>
+      <thead>
+        <th>Id</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>address</th>
+        <th>phone</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users; let i = index" [style.background]="selected == i?'yellow':'white'" (click)="selected = i" (click)="userSelected(user.billy_userID)">
+            <ng-container>
+                <td>{{user.billy_userID}}</td>
+                <td>{{user.first_name}}</td>
+                <td>{{user.last_name}}</td>    
+                <td>{{user.address}}</td>
+                <td>{{user.phone}}</td>   
+            </ng-container>
+        </tr>
+      </tbody>
+    </table>
+  </div>
