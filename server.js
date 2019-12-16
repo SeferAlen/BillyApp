@@ -1,14 +1,22 @@
 const express = require('express');
-var path = require('path');
 const app = express();
+const path = require('path');
+const port = process.env.PORT || 8000;
+const server = require('http').Server(app);
 
-app.use(express.static(__dirname + '/dist/'));
-app.listen(process.env.PORT || 8080);
+app.use(express.static(__dirname, 'dist', {index: false}));
 
-if (process.env.NODE_ENV === 'production') {
-	app.use(express.static('client/build'));
-}
 
-app.get('*', (request, response) => {
-	response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+server.listen(port, function() {
+    console.log("App running on port " + port);
+})
+
+// PathLocationStrategy
+
+app.get('', function(req, res) {
+    res.sendFile(path.join(__dirname, 'src', 'index.html'));
+});
+
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname, 'src', 'index.html'));
 });
