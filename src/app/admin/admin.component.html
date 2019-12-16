@@ -6,7 +6,7 @@
 
 <app-password class="password"></app-password>
 
-<div class="UsersBills">
-  <app-users *ngIf="users" [users]="users" class="users" (onUserSelected)="getUserBills($event)"></app-users>
-  <app-bill *ngIf="bills" [bills]="bills" class="bills" [username]=""></app-bill>
+<div class="UsersBills" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start start" fxLayoutGap="20px">
+  <app-users *ngIf="users" [users]="users" (onUserSelected)="getUserBills($event)"></app-users>
+  <app-bill *ngIf="bills" [bills]="bills" [username]=""></app-bill>
 </div>

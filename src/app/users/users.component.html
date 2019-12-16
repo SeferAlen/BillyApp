@@ -9,7 +9,7 @@
         <th>phone</th>
       </thead>
       <tbody>
-        <tr *ngFor="let user of users; let i = index" [style.background]="selected == i?'yellow':'white'" (click)="selected = i" (click)="userSelected(user.billy_userID)">
+        <tr *ngFor="let user of users; let i = index" [style.background]="selected == i?'#53788a':'white'" [style.color]="selected == i?'white':'black'" (click)="selected = i" (click)="userSelected(user.billy_userID)">
             <ng-container>
                 <td>{{user.billy_userID}}</td>
                 <td>{{user.first_name}}</td>

@@ -1,8 +1,5 @@
-.tableContainer {
-    margin-top: 5%;
- }
- 
  table, th, td {
+    font-size: 12px;
     border: 1px solid black;
     border-collapse: collapse;
   }
@@ -13,7 +10,7 @@
 }
 
 .tableHeader {
-    font-size: 30px;
+    font-size: 24px;
     color: sienna;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
