@@ -1,4 +1,4 @@
-<button mat-button [matMenuTriggerFor]="menu" class="menuDesign">Welcome {{ username }}</button>
+<button mat-button [matMenuTriggerFor]="menu" class="menuDesign" fxFlex="20%" fxFlex.sm="50%">Welcome {{ username }}</button>
 <mat-menu #menu="matMenu">
   <button mat-menu-item (click)="getUsers()">Users</button>
   <button mat-menu-item (click)="logout()">Logout</button>

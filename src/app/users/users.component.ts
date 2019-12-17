@@ -18,7 +18,6 @@ export class UsersComponent implements OnInit {
   }
 
   userSelected(id) {
-    console.log("user selected in child " + id);
     this.onUserSelected.emit(id);
   }
 }

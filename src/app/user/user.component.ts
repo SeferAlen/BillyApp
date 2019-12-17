@@ -30,6 +30,10 @@ export class UserComponent implements OnInit {
       (bills) => {
         this.bills = bills;
         console.log(bills);
+      }, 
+      (error: any) => {
+        console.log("Error !!! -> " + error);
+        popUp.createError('Error', 'Error has occurred');
       }
     ))
   }

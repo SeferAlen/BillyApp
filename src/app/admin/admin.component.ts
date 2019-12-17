@@ -30,6 +30,8 @@ export class AdminComponent implements OnInit {
         this.users = response.body;
       }, 
       (error: any) => {
+        console.log("Error !!! -> " + error);
+        popUp.createError('Error', 'Error has occurred');
       }
     )
   }
@@ -44,6 +46,10 @@ export class AdminComponent implements OnInit {
       (bills) => {
         this.bills = bills;
         console.log(bills);
+      }, 
+      (error: any) => {
+        console.log("Error !!! -> " + error);
+        popUp.createError('Error', 'Error has occurred');
       }
     ))
   }
