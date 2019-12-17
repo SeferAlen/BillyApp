@@ -23,7 +23,7 @@ export class BillsService {
              })
         };
 
-        this.urlUsername = enviroment.apiUrl + "bills/username/" + username;
+        this.urlUsername = environment.apiUrl + "bills/username/" + username;
 
         console.log("getBillsByUsername " + this.urlUsername);
 
@@ -39,7 +39,7 @@ export class BillsService {
              })
         };
 
-        this.urlId = enviroment.apiUrl + "bills/uuid/" + id;
+        this.urlId = environment.apiUrl + "bills/uuid/" + id;
 
         console.log("getBillsById " + this.urlId);
 

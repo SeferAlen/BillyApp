@@ -7,7 +7,7 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class LoginService {
 
-    url = enviroment.apiUrl + "login";
+    url = environment.apiUrl + "login";
 
     constructor(private _http: HttpClient) {
     }

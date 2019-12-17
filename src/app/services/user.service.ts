@@ -8,8 +8,8 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class UserService {
 
-    urlPassword = enviroment.apiUrl + "users/password";
-    urlUsers = enviroment.apiUrl + "users";
+    urlPassword = environment.apiUrl + "users/password";
+    urlUsers = environment.apiUrl + "users";
 
     constructor(private _http: HttpClient) {
     }
