@@ -26,15 +26,14 @@ export class UserComponent implements OnInit {
   }
 
   getBills() {
-    this.billService.getBillsByUsername(this.username).subscribe((
+    this.billService.getBillsByUsername(this.username).subscribe(
       (bills) => {
         this.bills = bills;
-        console.log(bills);
       }, 
       (error: any) => {
         console.log("Error !!! -> " + error);
         popUp.createError('Error', 'Error has occurred');
       }
-    ))
+    )
   }
 }

@@ -45,7 +45,6 @@ export class PasswordComponent implements OnInit {
         } else if (response.status == 200) {
           popUp.createSuccess('Success', 'Password changed');  
         } else {
-          console.log(response)
           popUp.createError('Error', 'Unknown error');
         }
       }, 
@@ -72,6 +71,5 @@ export const passwordOKValidator: ValidatorFn = (control: FormGroup): Validation
 
   if (password.value === confirm.value) valid = true;
 
-  console.log(valid);
   return !valid ? { 'passwordOK': true } : null;
 };
