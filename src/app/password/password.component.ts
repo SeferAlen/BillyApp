@@ -50,8 +50,8 @@ export class PasswordComponent implements OnInit {
         }
       }, 
       (error: any) => {
-        console.log(error);
-        popUp.createError('Error', error);
+        console.log("Error !!! -> " + error);
+        popUp.createError('Error', 'Error has occurred');
       }
     );
   }

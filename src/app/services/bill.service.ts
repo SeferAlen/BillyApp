@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx';
 import { Bill } from '../interface/Bill';
+import { environment } from '../../environments/environment';
 import { jwtUtil } from '../utility/jwtUtil';
 
 @Injectable()
@@ -22,7 +23,7 @@ export class BillsService {
              })
         };
 
-        this.urlUsername = "https://billyservices.herokuapp.com/bills/username/" + username;
+        this.urlUsername = environment.apiUrl + "bills/username/" + username;
 
         console.log("getBillsByUsername " + this.urlUsername);
 
@@ -38,7 +39,7 @@ export class BillsService {
              })
         };
 
-        this.urlId = "https://billyservices.herokuapp.com/bills/uuid/" + id;
+        this.urlId = environment.apiUrl + "bills/uuid/" + id;
 
         console.log("getBillsById " + this.urlId);
 
