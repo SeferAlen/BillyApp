@@ -53,8 +53,6 @@ export class LoginComponent implements OnInit {
         }     
       }, 
       (error: any) => {
-        console.log("Error !!! -> " + error);
-        popUp.createError('Error', 'Error has occurred');
       }
     );
   }
