@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { popUp } from '../utility/popUp';
 import { jwtUtil } from '../utility/jwtUtil';
 import { User } from '../interface/User';
 import { Bill } from '../interface/Bill';
@@ -30,6 +31,8 @@ export class AdminComponent implements OnInit {
         this.users = response.body;
       }, 
       (error: any) => {
+        console.log("Error !!! -> " + error);
+        popUp.createError('Error', 'Error has occurred');
       }
     )
   }
@@ -40,11 +43,15 @@ export class AdminComponent implements OnInit {
   }
 
   getUserBills(id) {
-    this.billsService.getBillsById(id).subscribe((
+    this.billsService.getBillsById(id).subscribe(
       (bills) => {
         this.bills = bills;
         console.log(bills);
+      }, 
+      (error: any) => {
+        console.log("Error !!! -> " + error);
+        popUp.createError('Error', 'Error has occurred');
       }
-    ))
+    )
   }
 }

@@ -3,12 +3,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx';
 import { User } from '../interface/User';
 import { jwtUtil } from '../utility/jwtUtil';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class UserService {
 
-    urlPassword = "https://billyservices.herokuapp.com/users/password";
-    urlUsers = "https://billyservices.herokuapp.com/users";
+    urlPassword = environment.apiUrl + "users/password";
+    urlUsers = environment.apiUrl + "users";
 
     constructor(private _http: HttpClient) {
     }

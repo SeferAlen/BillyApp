@@ -23,6 +23,7 @@ import { BillsService } from './services/bill.service';
 import { PasswordComponent } from './password/password.component';
 import { BillComponent } from './bill/bill.component';
 import { UsersComponent } from './users/users.component';
+import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { UsersComponent } from './users/users.component';
     UserComponent,
     PasswordComponent,
     BillComponent,
-    UsersComponent
+    UsersComponent,
+    AlertDialogComponent
   ],
   imports: [
     BrowserModule,

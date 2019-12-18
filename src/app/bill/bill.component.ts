@@ -27,9 +27,4 @@ export class BillComponent implements OnInit {
       if (bill.total > this.maxValue) this.maxValue = bill.total;
     });
   }
-
-onInputChange()
-{
-  console.log("HEY");
-}
 }
